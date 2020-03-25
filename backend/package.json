@@ -1,0 +1,30 @@
+{
+  "name": "omnistack_11",
+  "version": "1.0.0",
+  "description": "Semana Omnistack 11",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "prod": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/azbardini/omnistack_11.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/azbardini/omnistack_11/issues"
+  },
+  "homepage": "https://github.com/azbardini/omnistack_11#readme",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "knex": "^0.20.13",
+    "sqlite3": "^4.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
