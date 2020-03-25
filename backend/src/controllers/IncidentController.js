@@ -33,7 +33,7 @@ async function listIncidents() {
 }
 
 
-async function remove(req, res) {
+async function removeAll(req, res) {
   const incidents = await deleteIncidents();
   return res.json(incidents);
 }
@@ -42,8 +42,36 @@ async function deleteIncidents() {
   return incidents
 }
 
+
+async function remove(req, res) {
+  const {
+    id
+  } = req.params;
+  const ngoId = req.headers.authorization;
+  const status = await getPermissionToRemove(ngoId, id);
+  if (status == 204) {
+    await deleteIncident(id);
+  }
+  return res.status(status).send();
+}
+async function getPermissionToRemove(ngoId, id) {
+  const incident = await connection('incident').where('id', id).select('ngo_id').first();
+  if (!incident) {
+    return 404; //Not Found
+  }
+  if (incident.ngo_id !== ngoId) {
+    return 401; //Unauthorized
+  }
+  return 204; //No Content
+}
+async function deleteIncident(id) {
+  const incidents = await connection('incident').where('id', id).delete();
+  return
+}
+
 module.exports = {
   create,
   list,
+  removeAll,
   remove
 }
