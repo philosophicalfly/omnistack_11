@@ -24,11 +24,22 @@ async function insertIncident(incidentData, ngoId) {
 
 
 async function list(req, res) {
-  const incidents = await listIncidents();
+  let {
+    page = 1
+  } = req.query;
+  const qtt = 5;
+  const count = await countIncidents();
+  const incidents = await listIncidents(page, qtt);
+
+  res.header('X-Total-Count', count);
   return res.json(incidents);
 }
-async function listIncidents() {
-  const incidents = await connection('incident').select('*');
+async function countIncidents() {
+  const [count] = await connection('incident').count();
+  return count['count(*)'];
+}
+async function listIncidents(page, qtt) {
+  const incidents = await connection('incident').limit(qtt).offset((page - 1) * qtt).select('*');
   return incidents
 }
 
