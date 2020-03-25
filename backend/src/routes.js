@@ -1,6 +1,7 @@
 const express = require('express');
 const NgoController = require('./controllers/NgoController');
 const IncidentController = require('./controllers/IncidentController');
+const ProfileController = require('./controllers/ProfileController');
 const routes = express.Router();
 
 const connection = require('./database/connection');
@@ -24,6 +25,7 @@ routes.get('/incident', IncidentController.list)
 routes.delete('/incident/:id', IncidentController.remove)
 routes.get('/delincident', IncidentController.removeAll)
 
+routes.get('/profile', ProfileController.list)
 
 module.exports = routes;
 
