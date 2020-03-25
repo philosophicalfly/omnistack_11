@@ -21,7 +21,8 @@ routes.get('/delNgo', NgoController.remove)
 
 routes.post('/incident', IncidentController.create);
 routes.get('/incident', IncidentController.list)
-routes.get('/delincident', IncidentController.remove)
+routes.delete('/incident/:id', IncidentController.remove)
+routes.get('/delincident', IncidentController.removeAll)
 
 
 module.exports = routes;
