@@ -1,5 +1,6 @@
 const express = require('express');
 const NgoController = require('./controllers/NgoController');
+const IncidentController = require('./controllers/IncidentController');
 const routes = express.Router();
 
 const connection = require('./database/connection');
@@ -17,6 +18,11 @@ routes.post('/index', (req, res) => {
 routes.post('/ngo', NgoController.create);
 routes.get('/ngo', NgoController.list)
 routes.get('/delNgo', NgoController.remove)
+
+routes.post('/incident', IncidentController.create);
+routes.get('/incident', IncidentController.list)
+routes.get('/delincident', IncidentController.remove)
+
 
 module.exports = routes;
 
