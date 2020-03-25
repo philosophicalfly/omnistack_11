@@ -39,7 +39,11 @@ async function countIncidents() {
   return count['count(*)'];
 }
 async function listIncidents(page, qtt) {
-  const incidents = await connection('incident').limit(qtt).offset((page - 1) * qtt).select('*');
+  const incidents = await connection('incident')
+    .join('ngo', 'ngo.id', '=', 'incident.ngo_id')
+    .limit(qtt)
+    .offset((page - 1) * qtt)
+    .select(['incident.*', 'ngo.name', 'ngo.email', 'ngo.whatsapp', 'ngo.city', 'ngo.uf']);
   return incidents
 }
 
@@ -49,7 +53,8 @@ async function removeAll(req, res) {
   return res.json(incidents);
 }
 async function deleteIncidents() {
-  const incidents = await connection('incident').delete('*');
+  const incidents = await connection('incident')
+    .delete('*');
   return incidents
 }
 
@@ -66,7 +71,10 @@ async function remove(req, res) {
   return res.status(status).send();
 }
 async function getPermissionToRemove(ngoId, id) {
-  const incident = await connection('incident').where('id', id).select('ngo_id').first();
+  const incident = await connection('incident')
+    .where('id', id)
+    .select('ngo_id')
+    .first();
   if (!incident) {
     return 404; //Not Found
   }
@@ -76,7 +84,9 @@ async function getPermissionToRemove(ngoId, id) {
   return 204; //No Content
 }
 async function deleteIncident(id) {
-  const incidents = await connection('incident').where('id', id).delete();
+  const incidents = await connection('incident')
+    .where('id', id)
+    .delete();
   return
 }
 
