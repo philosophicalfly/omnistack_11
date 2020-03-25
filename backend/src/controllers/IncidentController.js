@@ -13,17 +13,6 @@ async function create(req, res) {
     error: "Not enough data provided."
   });
 }
-
-async function list(req, res) {
-  const incidents = await listIncidents();
-  return res.json(incidents);
-}
-
-async function remove(req, res) {
-  const incidents = await deleteIncidents();
-  return res.json(incidents);
-}
-
 async function insertIncident(incidentData, ngoId) {
   const newIncident = {
     ...incidentData,
@@ -33,11 +22,21 @@ async function insertIncident(incidentData, ngoId) {
   return id
 }
 
+
+async function list(req, res) {
+  const incidents = await listIncidents();
+  return res.json(incidents);
+}
 async function listIncidents() {
   const incidents = await connection('incident').select('*');
   return incidents
 }
 
+
+async function remove(req, res) {
+  const incidents = await deleteIncidents();
+  return res.json(incidents);
+}
 async function deleteIncidents() {
   const incidents = await connection('incident').delete('*');
   return incidents

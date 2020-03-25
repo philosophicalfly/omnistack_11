@@ -13,17 +13,6 @@ async function create(req, res) {
     error: "Not enough data provided."
   });
 }
-
-async function list(req, res) {
-  const ngos = await listNgos();
-  return res.json(ngos);
-}
-
-async function remove(req, res) {
-  const ngos = await deleteNgos();
-  return res.json(ngos);
-}
-
 async function insertNgo(ngoData) {
   const id = crypto.randomBytes(4).toString('HEX');
   const newNgo = {
@@ -34,11 +23,21 @@ async function insertNgo(ngoData) {
   return id
 }
 
+
+async function list(req, res) {
+  const ngos = await listNgos();
+  return res.json(ngos);
+}
 async function listNgos() {
   const ngos = await connection('ngo').select('*');
   return ngos
 }
 
+
+async function remove(req, res) {
+  const ngos = await deleteNgos();
+  return res.json(ngos);
+}
 async function deleteNgos() {
   const ngos = await connection('ngo').delete('*');
   return ngos
