@@ -75,7 +75,8 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 2, 0, 2)
   },
   cardContent: {
-    flexGrow: 1
+    flexGrow: 1,
+    minHeight: '300px'
   },
   footer: {
     backgroundColor: defColor.primary,

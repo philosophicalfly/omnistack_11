@@ -1,10 +1,9 @@
 import React from 'react';
-import Cases from './Cases';
-import UserLogin from './UserLogin';
-import UserRegister from './UserRegister';
+
+import Routes from './routes';
 
 function App() {
-  return (<Cases />);
+  return (<Routes/>);
 }
 
 export default App;
