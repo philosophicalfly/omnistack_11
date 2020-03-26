@@ -1,15 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Cases from './Cases';
-import UserLogin from './UserLogin';
-import * as serviceWorker from './serviceWorker';
+import App from './App';
 
 ReactDOM.render(<React.StrictMode>
-  <UserLogin/>
-  <Cases/>
+  <App/>
 </React.StrictMode>, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// <UserLogin/>
+// <Cases/>
+// <UserRegister/>

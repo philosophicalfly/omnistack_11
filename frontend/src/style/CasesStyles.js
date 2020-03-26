@@ -12,10 +12,28 @@ const defColor = {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100vh'
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
+  },
+  modal: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: `translate(-50%, -50%)`,
+    width: '60%',
+    minWidth: '60%',
+    backgroundColor: theme.palette.background.paper,
+    borderRadius: '5px',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(5),
+  },
+  main: {
+    marginTop: theme.spacing(8),
+    marginBottom: theme.spacing(2),
   },
   icon: {
-      color: defColor.superLight
+    color: defColor.superLight
   },
   header: {
     backgroundColor: defColor.primary,
@@ -30,6 +48,10 @@ const useStyles = makeStyles((theme) => ({
     width: '180px',
     paddingBottom: theme.spacing(1)
   },
+  newCaseImage: {
+    width: '80%',
+    padding: theme.spacing(3)
+  },
   title: {
     backgroundColor: defColor.superLight,
     padding: theme.spacing(4, 0, 4, 0)
@@ -37,6 +59,11 @@ const useStyles = makeStyles((theme) => ({
   primaryButton: {
     backgroundColor: defColor.superLight,
     margin: theme.spacing(1)
+  },
+  submitButton: {
+    backgroundColor: defColor.primary,
+    color: defColor.superLight,
+    margin: theme.spacing(3, 0, 2)
   },
   cardGrid: {
     padding: theme.spacing(4, 4, 4, 4)
@@ -53,7 +80,11 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     backgroundColor: defColor.primary,
     color: 'white',
-    padding: theme.spacing(2)
+    padding: theme.spacing(2),
+    marginTop: 'auto'
+  },
+  whiteLink: {
+    color: 'white'
   },
 }));
 

@@ -1,8 +1,10 @@
 import React from 'react';
-import './App.css';
+import Cases from './Cases';
+import UserLogin from './UserLogin';
+import UserRegister from './UserRegister';
 
 function App() {
-  return (<div className="App"/>);
+  return (<Cases />);
 }
 
 export default App;
