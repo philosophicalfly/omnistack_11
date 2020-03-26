@@ -26,7 +26,7 @@ routes.get('/incident', IncidentController.list)
 routes.delete('/incident/:id', IncidentController.remove)
 routes.get('/delincident', IncidentController.removeAll)
 
-routes.post('/profile', ProfileController.list)
+routes.get('/profile', ProfileController.list)
 
 routes.post('/session', SessionController.create);
 
